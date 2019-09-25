@@ -3,12 +3,16 @@ import cv2
 import os
 
 
+
+
+# face cropping from the image
 class FaceDetector:
     def __init__(self, confid = 0.5, prototxt="deploy.prototxt.txt", model="res10_300x300_ssd_iter_140000.caffemodel"):
         self.confid = 0.5
         self.net = cv2.dnn.readNetFromCaffe(prototxt, model)
 
 
+    # takes image
     def get_face2(self, image):
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         (h, w) = image.shape[:2]
@@ -48,6 +52,7 @@ class FaceDetector:
         return cv2.cvtColor(face, cv2.COLOR_BGR2RGB)
 
 
+    # takes path
     def get_face(self, image_path):
         #load the input image and construct an input blob for the image
         # by resizing to a fixed 300x300 pixels and then normalizing it
